@@ -25,7 +25,7 @@ namespace CardGameEngine
         /// <summary>
         ///     Creates an instance of a <see cref="Card"/> that is considered unknown i.e. a card that has not be identified/shown to players
         /// </summary>
-        public Card()
+        private Card()
         {
             _id = 0;
         }
