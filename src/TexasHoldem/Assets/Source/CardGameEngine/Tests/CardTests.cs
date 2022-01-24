@@ -23,18 +23,6 @@ public class CardTests
     }
 
     [Test]
-    public void Initialise_AsUnknown_Success()
-    {
-        // Arrange & Act
-        var card = new Card();
-
-        // Assert
-        Assert.IsNotNull(card);
-        Assert.AreEqual(0, card.Id);
-        Assert.IsTrue(card.IsUnknown);
-    }
-
-    [Test]
     public void GetSuit_Success()
     {
         // Arrange
@@ -52,7 +40,7 @@ public class CardTests
     public void GetSuit_ThrowsInvalidOperation()
     {
         // Arrange
-        var card = new Card();
+        var card = Card.UnknownCard;
 
         // Act & Assert
         Assert.Throws<InvalidOperationException>(() => card.GetSuit());
@@ -76,7 +64,7 @@ public class CardTests
     public void GetSuitCard_ThrowsInvalidOperation()
     {
         // Arrange
-        var card = new Card();
+        var card = Card.UnknownCard;
 
         // Act & Assert
         Assert.Throws<InvalidOperationException>(() => card.GetSuitCard());
