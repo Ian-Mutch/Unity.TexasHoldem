@@ -9,12 +9,12 @@ public class CardTests
     {
         // Arrange
         var suit = Suit.Clubs;
-        var suitCard = SuitCard.Six;
-        var expectedId = (int)suitCard << 3;
+        var rank = Rank.Six;
+        var expectedId = (int)rank << 3;
         expectedId |= (int)suit;
 
         // Act
-        var card = new Card(suit, suitCard);
+        var card = new Card(suit, rank);
 
         // Assert
         Assert.IsNotNull(card);
@@ -27,7 +27,7 @@ public class CardTests
     {
         // Arrange
         var suit = Suit.Clubs;
-        var card = new Card(suit, SuitCard.Six);
+        var card = new Card(suit, Rank.Six);
 
         // Act
         var result = card.GetSuit();
@@ -47,26 +47,26 @@ public class CardTests
     }
 
     [Test]
-    public void GetSuitCard_Success()
+    public void GetRank_Success()
     {
         // Arrange
-        var suitCard = SuitCard.Six;
-        var card = new Card(Suit.Clubs, suitCard);
+        var rank = Rank.Six;
+        var card = new Card(Suit.Clubs, rank);
 
         // Act
-        var result = card.GetSuitCard();
+        var result = card.GetRank();
 
         // Assert
-        Assert.AreEqual(suitCard, result);
+        Assert.AreEqual(rank, result);
     }
 
     [Test]
-    public void GetSuitCard_ThrowsInvalidOperation()
+    public void GetRank_ThrowsInvalidOperation()
     {
         // Arrange
         var card = Card.UnknownCard;
 
         // Act & Assert
-        Assert.Throws<InvalidOperationException>(() => card.GetSuitCard());
+        Assert.Throws<InvalidOperationException>(() => card.GetRank());
     }
 }

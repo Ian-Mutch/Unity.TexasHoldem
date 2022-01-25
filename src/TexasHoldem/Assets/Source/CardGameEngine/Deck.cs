@@ -65,7 +65,7 @@ namespace CardGameEngine
         {
             // Each suit in a 52 card deck contains 13 cards
             for (int i = 1; i <= 13; i++)
-                _cards.Add(new Card(suit, (SuitCard)i));
+                _cards.Add(new Card(suit, (Rank)i));
         }
     }
 }

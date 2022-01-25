@@ -1,6 +1,6 @@
 namespace CardGameEngine
 {
-    public enum SuitCard
+    public enum Rank
     {
         Ace = 1,    // 0000 0001
         Two = 2,    // 0000 0010

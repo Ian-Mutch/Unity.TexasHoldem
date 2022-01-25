@@ -23,14 +23,14 @@ namespace CardGameEngine.Tests
             // Arrange
             var cards = new List<Card>()
             {
-                new Card(Suit.Spades, SuitCard.Ace),
-                new Card(Suit.Spades, SuitCard.Two),
-                new Card(Suit.Spades, SuitCard.Three),
-                new Card(Suit.Spades, SuitCard.Four),
-                new Card(Suit.Spades, SuitCard.Five),
-                new Card(Suit.Spades, SuitCard.Six),
-                new Card(Suit.Spades, SuitCard.Seven),
-                new Card(Suit.Spades, SuitCard.Eight)
+                new Card(Suit.Spades, Rank.Ace),
+                new Card(Suit.Spades, Rank.Two),
+                new Card(Suit.Spades, Rank.Three),
+                new Card(Suit.Spades, Rank.Four),
+                new Card(Suit.Spades, Rank.Five),
+                new Card(Suit.Spades, Rank.Six),
+                new Card(Suit.Spades, Rank.Seven),
+                new Card(Suit.Spades, Rank.Eight)
             };
             var cardCount = cards.Count;
             var shuffler = new ListDeckShuffler();
