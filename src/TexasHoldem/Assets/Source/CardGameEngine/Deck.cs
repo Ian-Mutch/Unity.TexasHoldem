@@ -6,12 +6,26 @@ namespace CardGameEngine
 {
     public class Deck
     {
+        #region Constants
+
         public const int MaxCardCount = 52;
+
+        #endregion
+
+        #region Properties
 
         public int Count => _cards.Count;
 
+        #endregion
+
+        #region Fields
+
         private List<Card> _cards;
         private IDeckShuffler _shuffler;
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         ///     Creates an instance of <see cref="Deck"/> populated with all 52 cards
@@ -33,6 +47,10 @@ namespace CardGameEngine
         {
             _shuffler = shuffler;
         }
+
+        #endregion
+
+        #region Methods
 
         public void Shuffle()
         {
@@ -67,5 +85,7 @@ namespace CardGameEngine
             for (int i = 1; i <= 13; i++)
                 _cards.Add(new Card(suit, (Rank)i));
         }
+
+        #endregion
     }
 }

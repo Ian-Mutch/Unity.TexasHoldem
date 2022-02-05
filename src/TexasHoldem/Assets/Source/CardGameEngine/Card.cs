@@ -2,10 +2,14 @@ namespace CardGameEngine
 {
     public class Card
     {
+        #region Constants
+
         private const byte RankShift = 3; // The amount to shift the suit card bits by to make room for the suit bits
         private const byte SuitMask = 7; // 00000111;
 
-        public static readonly Card UnknownCard = new Card();
+        #endregion
+
+        #region Properties
 
         /// <summary>
         ///     Bit packed integer containing suit and rank. From right to left, the first 3 bits represent suit, the following 4 bits represent the rank.
@@ -20,7 +24,17 @@ namespace CardGameEngine
         public int Id => _id;
         public bool IsUnknown => _id == 0;
 
+        #endregion
+
+        #region Fields
+
+        public static readonly Card UnknownCard = new Card();
+
         private readonly int _id;
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         ///     Creates an instance of a <see cref="Card"/> that is considered unknown i.e. a card that has not be identified/shown to players
@@ -41,6 +55,10 @@ namespace CardGameEngine
             _id |= (int)suit;
         }
 
+        #endregion
+
+        #region Methods
+
         public Suit GetSuit()
         {
             if (IsUnknown)
@@ -59,5 +77,7 @@ namespace CardGameEngine
             var rank = _id >> RankShift; // Shifts bits to the right enough so that all is remaining is the rank
             return (Rank)rank;
         }
+
+        #endregion
     }
 }
