@@ -15,6 +15,15 @@ public class ConnectingIcon : MonoBehaviour
 
     #region Unity Callbacks
 
+    private void OnValidate()
+    {
+        if(_image == null)
+            Debug.LogError($"No image component has been attached to {nameof(ConnectingIcon)}", this);
+
+        if (_animation == null)
+            Debug.LogError($"No animation component has been attached to {nameof(ConnectingIcon)}", this);
+    }
+
     private void Reset()
     {
         _image = GetComponent<Image>();
@@ -27,24 +36,21 @@ public class ConnectingIcon : MonoBehaviour
 
     public void Begin()
     {
-        if (_animation == null)
-            Debug.LogWarning($"No animation component has been attached to {nameof(RoomLauncherHUD)}", this);
-
-        _animation.Play();
-        SetColorAlpha(1);
+        _animation?.Play();
+        SetImageColorAlpha(1);
     }
 
     public void End()
     {
-        _animation.Stop();
-        SetColorAlpha(0);
+        _animation?.Stop();
+        SetImageColorAlpha(0);
     }
 
     private void SetAnimationPlayingState(bool playing)
     {
         if (_animation == null)
         {
-            Debug.LogError($"No animation component has been attached to {nameof(RoomLauncherHUD)}", this);
+            Debug.LogError($"No animation component has been attached to {nameof(ConnectingIcon)}", this);
             return;
         }
 
@@ -56,26 +62,17 @@ public class ConnectingIcon : MonoBehaviour
 
     private void PlayAnimation()
     {
-        if (_animation.isPlaying)
-            Debug.LogWarning($"Redundant call to start playing animation for {nameof(ConnectingIcon)}. The animation is already being played", this);
-        else
-            _animation.Play();
+        _animation?.Play();
     }
 
     private void StopAnimation()
     {
-        if (!_animation.isPlaying)
-            Debug.LogWarning($"Redundant call to stop playing animation for {nameof(ConnectingIcon)}. No animation is being played", this);
-        else
-            _animation.Stop();
+        _animation?.Stop();
     }
 
-    private void SetColorAlpha(float alpha)
+    private void SetImageColorAlpha(float alpha)
     {
-        if (_animation == null)
-            Debug.LogWarning($"No animation component has been attached to {nameof(RoomLauncherHUD)}", this);
-
-        _image.SetColorAlpha(alpha);
+        _image?.SetColorAlpha(alpha);
     }
 
     #endregion
