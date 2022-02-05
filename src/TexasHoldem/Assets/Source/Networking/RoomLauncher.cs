@@ -48,13 +48,14 @@ public class RoomLauncher : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
+            Debug.LogWarning($"Instance of {nameof(RoomLauncher)} already exists, destroying gameobject", this);
             Destroy(gameObject);
             return;
         }
 
         _instance = this;
 
-        _searchTimeoutFunc = new WaitUntil(IsConnectingOrTimeOut);
+        _searchTimeoutFunc = new WaitUntil(IsConnectingOrTimeOut); // Cache WaitUntil func as search time won't change after set in inspector
     }
 
     private void Start()
@@ -92,7 +93,7 @@ public class RoomLauncher : MonoBehaviour
         NetworkManager.singleton.StartClient();
 
         _elapsedSearchTime = 0;
-        yield return _searchTimeoutFunc;
+        yield return _searchTimeoutFunc; //Use cached WaitUntil function as search time won't change once set in the inspector
 
         if (!NetworkClient.isConnected)
         {
