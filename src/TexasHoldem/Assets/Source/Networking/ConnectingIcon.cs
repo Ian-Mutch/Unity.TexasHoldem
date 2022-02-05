@@ -36,13 +36,13 @@ public class ConnectingIcon : MonoBehaviour
 
     public void Begin()
     {
-        _animation?.Play();
+        SetAnimationPlayingState(true);
         SetImageColorAlpha(1);
     }
 
     public void End()
     {
-        _animation?.Stop();
+        SetAnimationPlayingState(false);
         SetImageColorAlpha(0);
     }
 
@@ -60,20 +60,11 @@ public class ConnectingIcon : MonoBehaviour
             StopAnimation();
     }
 
-    private void PlayAnimation()
-    {
-        _animation?.Play();
-    }
+    private void PlayAnimation() => _animation?.Play();
 
-    private void StopAnimation()
-    {
-        _animation?.Stop();
-    }
+    private void StopAnimation() => _animation?.Stop();
 
-    private void SetImageColorAlpha(float alpha)
-    {
-        _image?.SetColorAlpha(alpha);
-    }
+    private void SetImageColorAlpha(float alpha) => _image?.SetColorAlpha(alpha);
 
     #endregion
 }
