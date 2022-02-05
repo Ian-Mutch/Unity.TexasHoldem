@@ -2,11 +2,11 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Ll]ogs/
-UserSettings/
+src/TexasHoldem/[Ll]ibrary/
+src/TexasHoldem/[Tt]emp/
+src/TexasHoldem/[Oo]bj/
+src/TexasHoldem/[Ll]ogs/
+src/TexasHoldem/UserSettings/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -59,4 +59,4 @@ crashlytics-build.properties
 
 # ParrelSync plugin generated files/folders
 
-src/*_clone_*/
+src/TexasHoldem_clone_*/
