@@ -5,6 +5,8 @@ namespace CardGameEngine
 {
     public class ListDeckShuffler : IDeckShuffler
     {
+        #region Methods
+
         /// <summary>
         ///     Shuffles a list of cards, return the same list
         /// </summary>
@@ -32,5 +34,7 @@ namespace CardGameEngine
 
             return list;
         }
+
+        #endregion
     }
 }

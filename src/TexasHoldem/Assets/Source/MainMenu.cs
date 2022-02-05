@@ -1,22 +1,22 @@
 using Mirror;
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public static event Action OnPlayClicked;
-
     private static MainMenu _instance;
 
     [SerializeField]
     private Button _play;
+    [SerializeField, Scene]
+    private string _playScene;
     [SerializeField]
     private Button _quit;
 
     private void OnValidate()
     {
-        // A reminder to assign serialize properties
+        // A reminder to assign serializable properties
         if (_play == null)
             Debug.LogError($"No 'Play' button has been assigned to the {nameof(MainMenu)}", this);
 
@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         // Destroy the gameobject if an existing instance of this component exists already
-        if(_instance != null && _instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     private void OnPlayButtonClicked()
     {
-        OnPlayClicked?.Invoke();
+        SceneManager.LoadScene(_playScene);
     }
 
     /// <summary>
