@@ -230,9 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _displayNameText: {fileID: 0}
-  _cashText: {fileID: 0}
   _backgroundImage: {fileID: 8943774439753680146}
+  _displayNameText: {fileID: 5141571174664464812}
+  _cashText: {fileID: 3574139398281554144}
   _readyColor: {r: 0, g: 1, b: 0, a: 0.5803922}
 --- !u!114 &2440136249848817895
 MonoBehaviour:

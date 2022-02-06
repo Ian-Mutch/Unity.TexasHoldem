@@ -1,3 +1,4 @@
+using CardGameEngine;
 using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,9 @@ namespace TexasHoldem
         private static PokerTable _instance;
         private List<THNetworkPlayer> _players;
         private Transform _transform;
+        [SyncVar]
+        private int _dealerIndex = -1;
+        private Deck _deck;
 
         #endregion
 
@@ -107,6 +111,40 @@ namespace TexasHoldem
             _players = new List<THNetworkPlayer>(playerCount);
             for (int i = 0; i < playerCount; i++)
                 _players.Add(null);
+        }
+
+        private void DealCards()
+        {
+            var startingIndex = _dealerIndex;
+            for (var i = 0; i < 2; i++)
+                for (var j = _dealerIndex; j < _dealerIndex + _players.Count; j++)
+                {
+                    var card = _deck.Pop();
+                    var player = _players[j % _players.Count];
+
+                    //TODO: Send card to player
+                }
+
+        }
+
+        #endregion
+
+        #region Network Methods
+
+        [ServerCallback]
+        public void StartRound()
+        {
+            _deck = new Deck();
+            _dealerIndex = 0;
+
+            OnRoundStarting();
+            DealCards();
+        }
+
+        [ClientRpc]
+        private void OnRoundStarting()
+        {
+            Debug.Log("Round started");
         }
 
         #endregion

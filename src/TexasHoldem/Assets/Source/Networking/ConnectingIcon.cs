@@ -2,69 +2,72 @@ using Common.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConnectingIcon : MonoBehaviour
+namespace Networking
 {
-    #region Fields
-
-    [SerializeField]
-    private Image _image;
-    [SerializeField]
-    private Animation _animation;
-
-    #endregion
-
-    #region Unity Callbacks
-
-    private void OnValidate()
+    public class ConnectingIcon : MonoBehaviour
     {
-        if(_image == null)
-            Debug.LogError($"No image component has been attached to {nameof(ConnectingIcon)}", this);
+        #region Fields
 
-        if (_animation == null)
-            Debug.LogError($"No animation component has been attached to {nameof(ConnectingIcon)}", this);
-    }
+        [SerializeField]
+        private Image _image;
+        [SerializeField]
+        private Animation _animation;
 
-    private void Reset()
-    {
-        _image = GetComponent<Image>();
-        _animation = GetComponent<Animation>();
-    }
+        #endregion
 
-    #endregion
+        #region Unity Callbacks
 
-    #region Methods
-
-    public void Begin()
-    {
-        SetAnimationPlayingState(true);
-        SetImageColorAlpha(1);
-    }
-
-    public void End()
-    {
-        SetAnimationPlayingState(false);
-        SetImageColorAlpha(0);
-    }
-
-    private void SetAnimationPlayingState(bool playing)
-    {
-        if (_animation == null)
+        private void OnValidate()
         {
-            Debug.LogError($"No animation component has been attached to {nameof(ConnectingIcon)}", this);
-            return;
+            if (_image == null)
+                Debug.LogError($"No image component has been attached to {nameof(ConnectingIcon)}", this);
+
+            if (_animation == null)
+                Debug.LogError($"No animation component has been attached to {nameof(ConnectingIcon)}", this);
         }
 
-        if (playing)
-            PlayAnimation();
-        else
-            StopAnimation();
+        private void Reset()
+        {
+            _image = GetComponent<Image>();
+            _animation = GetComponent<Animation>();
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void Begin()
+        {
+            SetAnimationPlayingState(true);
+            SetImageColorAlpha(1);
+        }
+
+        public void End()
+        {
+            SetAnimationPlayingState(false);
+            SetImageColorAlpha(0);
+        }
+
+        private void SetAnimationPlayingState(bool playing)
+        {
+            if (_animation == null)
+            {
+                Debug.LogError($"No animation component has been attached to {nameof(ConnectingIcon)}", this);
+                return;
+            }
+
+            if (playing)
+                PlayAnimation();
+            else
+                StopAnimation();
+        }
+
+        private void PlayAnimation() => _animation?.Play();
+
+        private void StopAnimation() => _animation?.Stop();
+
+        private void SetImageColorAlpha(float alpha) => _image?.SetColorAlpha(alpha);
+
+        #endregion
     }
-
-    private void PlayAnimation() => _animation?.Play();
-
-    private void StopAnimation() => _animation?.Stop();
-
-    private void SetImageColorAlpha(float alpha) => _image?.SetColorAlpha(alpha);
-
-    #endregion
 }

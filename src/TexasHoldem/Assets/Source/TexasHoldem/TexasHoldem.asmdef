@@ -1,0 +1,20 @@
+{
+    "name": "TexasHoldem",
+    "rootNamespace": "TexasHoldem",
+    "references": [
+        "GUID:c19891ddc519cb84f9b0cda362976997",
+        "GUID:30817c1a0e6d646d99c048fc403f5979",
+        "GUID:13d8846e0f48fa5488f9f00ebc30adaa",
+        "GUID:89a2a72646a1b3849bd2d39d9f254790",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
